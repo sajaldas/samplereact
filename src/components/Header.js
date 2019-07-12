@@ -16,7 +16,7 @@ class Header extends Component{
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/users">Users</Link></li>
                         <li><Link to="/todo">Todo List</Link></li>
-                        <li><Link to="/signup">Login</Link></li>
+                        <li><Link to="/signup">Signup</Link></li>
                     </ul>
                 </nav>                
                 <div className="clear"></div>

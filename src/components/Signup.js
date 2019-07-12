@@ -6,6 +6,8 @@ import { addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromLis
 
 const CLIENT_ID = '566747368285-nutel28dapl8063tchef5pnbmfmngslk.apps.googleusercontent.com'
 const SECRET = 'pn2mTRdDNvXa-TDA8cosyOQ4'
+const OAUTH2_ENDPOINT = 'https://accounts.google.com/o/oauth2/v2/auth';
+const USERINFO_URL = 'https://www.googleapis.com/oauth2/v3/userinfo'
 const REDIRECT_URL = 'http://localhost:3000/todo'
 
 class Signup extends Component {
@@ -24,15 +26,15 @@ class Signup extends Component {
         }        
     }
 
-    componentDidMount(){
-        window.gapi.signin2.render('g-signin2', {
-            'scope': 'https://www.googleapis.com/auth/plus.login',
-            'width': 200,
-            'height': 50,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': this.onSignIn
-        })
+    componentWillReceiveProps(){
+        // window.gapi.signin2.render('g-signin2', {
+        //     'scope': 'https://www.googleapis.com/auth/plus.login',
+        //     'width': 200,
+        //     'height': 50,
+        //     'longtitle': true,
+        //     'theme': 'dark',
+        //     'onsuccess': this.onSignIn
+        // })        
     }
 
     onSignIn(googleUser) {
@@ -68,18 +70,20 @@ class Signup extends Component {
     }
 
     handleLoginButtonClick = () => {
+        // https://www.googleapis.com/auth/userinfo.email
         let email  = this.state.emailInputValue
         let pass  = this.state.passInputValue
         console.log('email = ', email)
         console.log('pass = ', pass)
-        // let login_url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=' +
-        // encodeURI('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') +
-        //  '&redirect_uri=' + encodeURI(REDIRECT_URL) +
-        //  '&response_type=code&client_id=' + CLIENT_ID + '&access_type=online';
-        //  console.log('login_url = ', login_url)        
+        let login_url = OAUTH2_ENDPOINT+'?scope=' +
+        encodeURI('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') +
+        '&redirect_uri=' + encodeURI(REDIRECT_URL) +
+        '&response_type=token&client_id=' + CLIENT_ID + '&access_type=online&prompt=consent';
+        console.log('login_url = ', login_url)
+        window.location.href=login_url;
     }
     
-    render() {
+    render() {        
         return (
             <div className="innercontent">                
                 <h1>Login Page</h1>
@@ -91,9 +95,9 @@ class Signup extends Component {
                             </div>
                             <div className="row">
                                 <label>Password:</label><input type="text" id="pass" onChange={(event) => this.handleInput(event, 'pass')} value={this.state.inputValue} />
-                            </div>
-                            {/* <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleLoginButtonClick}>Login</button></div> */}
+                            </div>                            
                             <div className="row" id="g-signin2"></div>
+                            <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleLoginButtonClick}>Login</button></div>
                         </div>
                         
                     </div>

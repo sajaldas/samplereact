@@ -24,6 +24,11 @@ class Todo extends Component {
         // })        
         // console.log('loc props = ', this.props.location.search)
         // console.log('match = ', this.props.match)
+        //console.log('query string ', this.props.location.hash)
+        let hash = this.props.location.hash.split('#access_token=')
+        let spl = hash[1].split('&')
+        let access_code = spl[0]
+        console.log('access_code = ', access_code);
     }
 
     // componentWillReceiveProps(nextProps) {
@@ -122,7 +127,7 @@ class Todo extends Component {
         
     }
 
-    render() {
+    render() {        
         return (
             <div className="innercontent">
                 <h1>Todo List Page</h1>
