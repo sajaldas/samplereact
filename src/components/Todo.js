@@ -16,25 +16,7 @@ class Todo extends Component {
             itemId: 0,
             toDoList: []
         }        
-    }
-
-    componentDidMount(){
-        // this.setState({
-        //     toDoList: this.props.todos
-        // })        
-        // console.log('loc props = ', this.props.location.search)
-        // console.log('match = ', this.props.match)
-        //console.log('query string ', this.props.location.hash)
-        let hash = this.props.location.hash.split('#access_token=')
-        let spl = hash[1].split('&')
-        let access_code = spl[0]
-        console.log('access_code = ', access_code);
-    }
-
-    // componentWillReceiveProps(nextProps) {
-    //     //console.log('nextProps = ', nextProps.todos)
-    //     this.setState({toDoList: nextProps.todos})
-    // }
+    }    
 
     handleInput = (e) => {
         //console.log('val = ', e.target.value)

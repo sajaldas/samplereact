@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
+// import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
+// import { addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
 
 
 const CLIENT_ID = '566747368285-nutel28dapl8063tchef5pnbmfmngslk.apps.googleusercontent.com'
-const SECRET = 'pn2mTRdDNvXa-TDA8cosyOQ4'
+//const SECRET = 'pn2mTRdDNvXa-TDA8cosyOQ4'
 const OAUTH2_ENDPOINT = 'https://accounts.google.com/o/oauth2/v2/auth';
-const USERINFO_URL = 'https://www.googleapis.com/oauth2/v3/userinfo'
-const REDIRECT_URL = 'http://localhost:3000/todo'
+const REDIRECT_URL = 'http://localhost:3000/authenticate'
 
 class Signup extends Component {
 
@@ -18,11 +17,7 @@ class Signup extends Component {
             emailInputText: '',
             emailInputValue: '',
             passInputText: '',
-            passInputValue: '',
-            // filterApplied: false,
-            // filterType: 'all',
-            // itemId: 0,
-            // toDoList: []
+            passInputValue: '',            
         }        
     }
 
@@ -58,7 +53,7 @@ class Signup extends Component {
     
     handleInput = (e, fieldType) => {
         //console.log('val = ', e.target.value)
-        if(fieldType=='email')
+        if(fieldType==='email')
         {
             this.setState({ emailInputText: e.target.value })
             this.setState({ emailInputValue: e.target.value })
@@ -69,35 +64,38 @@ class Signup extends Component {
         }        
     }
 
-    handleLoginButtonClick = () => {
-        // https://www.googleapis.com/auth/userinfo.email
-        let email  = this.state.emailInputValue
-        let pass  = this.state.passInputValue
-        console.log('email = ', email)
-        console.log('pass = ', pass)
+    handleLoginButtonClick = () => {        
+        // let email  = this.state.emailInputValue
+        // let pass  = this.state.passInputValue
+        // console.log('email = ', email)
+        // console.log('pass = ', pass)        
+    }
+
+    handleGoogleSignup = () => {
         let login_url = OAUTH2_ENDPOINT+'?scope=' +
         encodeURI('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') +
         '&redirect_uri=' + encodeURI(REDIRECT_URL) +
         '&response_type=token&client_id=' + CLIENT_ID + '&access_type=online&prompt=consent';
-        console.log('login_url = ', login_url)
-        window.location.href=login_url;
+        //console.log('login_url = ', login_url)
+        window.location.href=login_url; 
     }
     
     render() {        
         return (
             <div className="innercontent">                
-                <h1>Login Page</h1>
+                <h1>Signup Page</h1>
                 <div className="prodcontainer">
                     <div className="todocontainer">
                         <div className="formbox login">
-                            <div className="row">
+                            {/* <div className="row">
                                 <label>Login Id:</label><input type="text" id="email" onChange={(event) => this.handleInput(event, 'email')} value={this.state.inputValue} />
                             </div>
                             <div className="row">
                                 <label>Password:</label><input type="text" id="pass" onChange={(event) => this.handleInput(event, 'pass')} value={this.state.inputValue} />
                             </div>                            
                             <div className="row" id="g-signin2"></div>
-                            <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleLoginButtonClick}>Login</button></div>
+                            <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleLoginButtonClick}>Login</button></div> */}
+                            <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleGoogleSignup}>Signup with Google</button></div>
                         </div>
                         
                     </div>
@@ -107,21 +105,23 @@ class Signup extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    //console.log('new state = ', state);
-    return {
-        todos: state.todos.todoList
-    }
-}
+// const mapStateToProps = (state) => {
+//     //console.log('new state = ', state);
+//     return {
+//         todos: state.todos.todoList
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({
-        addTolist: addTolist,
-        updateToDoStatusDone: updateToDoStatusDone,
-        updateToDoStatusNotDone: updateToDoStatusNotDone,
-        deleteFromList: deleteFromList
-    }, dispatch)
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return bindActionCreators({
+//         addTolist: addTolist,
+//         updateToDoStatusDone: updateToDoStatusDone,
+//         updateToDoStatusNotDone: updateToDoStatusNotDone,
+//         deleteFromList: deleteFromList
+//     }, dispatch)
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+// export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+
+export default Signup;
 
