@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/samplereact/static/css/main.5e263ae2.chunk.css",
+    "main.js": "/samplereact/static/js/main.63b95eaf.chunk.js",
+    "main.js.map": "/samplereact/static/js/main.63b95eaf.chunk.js.map",
+    "runtime~main.js": "/samplereact/static/js/runtime~main.bacbd486.js",
+    "runtime~main.js.map": "/samplereact/static/js/runtime~main.bacbd486.js.map",
+    "static/css/2.5c100531.chunk.css": "/samplereact/static/css/2.5c100531.chunk.css",
+    "static/js/2.2e125f37.chunk.js": "/samplereact/static/js/2.2e125f37.chunk.js",
+    "static/js/2.2e125f37.chunk.js.map": "/samplereact/static/js/2.2e125f37.chunk.js.map",
+    "index.html": "/samplereact/index.html",
+    "precache-manifest.a7d679ba869607261e41bbe77f0c9f1b.js": "/samplereact/precache-manifest.a7d679ba869607261e41bbe77f0c9f1b.js",
+    "service-worker.js": "/samplereact/service-worker.js",
+    "static/css/2.5c100531.chunk.css.map": "/samplereact/static/css/2.5c100531.chunk.css.map",
+    "static/css/main.5e263ae2.chunk.css.map": "/samplereact/static/css/main.5e263ae2.chunk.css.map",
+    "static/media/font-awesome.min.css": "/samplereact/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/logo.svg": "/samplereact/static/media/logo.5d5d9eef.svg"
+  }
+}
