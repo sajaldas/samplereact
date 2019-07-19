@@ -15,7 +15,7 @@
 nav.menu {
   float: left;
   margin-top: 25px;
-  width: 95%;
+  width: 75%;
   text-align: left;
 }
 
@@ -337,4 +337,56 @@ ul.vote li {
 }
 .login .row {
   margin-bottom: 15px;
+}
+.hdr-profile {
+  width: 20%;
+  float: right;
+  max-height: 70px;
+}
+.profimg {
+  width: 17.5%;
+  float: right;
+  text-align: left;
+  margin-right: 5px;
+}
+.profimg img {
+  max-width: 100%;
+  border: 0;
+  border-radius: 50%;
+}
+.proflogin {
+  display: block;
+  float: left;
+  padding-top: 25px;
+  width: 81%;
+  text-align: right;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+.proflogin span {
+  padding: 0 5px;
+}
+span.logout, span.profile {
+  cursor: pointer;
+  color: deepskyblue;
+}
+.profile_container {
+  width: 45%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+.profileimg {
+  max-width: 200px;
+  margin: 0 auto;
+}
+.profileimg img {
+  border-radius: 50%;
+  max-width: 100%;
+}
+.userdetails {
+  width: 45%;
+  margin: 25px auto;
+}
+.userdetails td {
+  text-align: left;
 }

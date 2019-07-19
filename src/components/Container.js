@@ -5,6 +5,7 @@ import Users from './Users';
 import Todo from './Todo';
 import Signup from './Signup';
 import SignupAuth from './SignupAuth';
+import Profile from './Profile';
 
 class Container extends Component {
     render() {
@@ -16,6 +17,7 @@ class Container extends Component {
                     <Route exact path="/todo" component={Todo} />
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/authenticate" component={SignupAuth} />
+                    <Route exact path="/profile" component={Profile} />
                 </Switch>
             </div>
         )
