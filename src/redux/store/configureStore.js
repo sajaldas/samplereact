@@ -12,7 +12,7 @@ const allReducers = combineReducers({
 
 const confirmationMiddleware = store => next => action => {
   //console.log('action = ', action)
-  if(action.payload.doConfirm)
+  if(action.payload.hasOwnProperty("doConfirm"))  
   {
     if(window.confirm('Are you sure ?'))
     next(action)  

@@ -20,19 +20,12 @@ class SignupAuth extends Component {
             const authStr = 'Bearer '.concat(access_code); 
             axios.get(USERINFO_URL, { headers: { Authorization: authStr }})
             .then(response => {
-                console.log('response = ', response);
-                if(response.data){                
-                    // this.props.updateLoggedInUser(response.data).then(function(){
-                    //     console('promice resolve');                        
-                    // })                                        
-                    this.props.updateLoggedInUser(response.data)
-                    //console.log('sajal = ', this.props.loggedUser);
-                    localStorage.setItem('userName', response.data.name);
-                    localStorage.setItem('profilePic', response.data.picture);
-                    window.location.href='/profile';
-                    // setTimeout(() => {
-                    //     window.location.href='/profile';
-                    // }, 1000);                    
+                //console.log('response = ', response);
+                if(response.data){                                    
+                    this.props.updateLoggedInUser({user: response.data})
+                    this.props.history.push("/profile")
+                    // localStorage.setItem('userName', response.data.name);
+                    // localStorage.setItem('profilePic', response.data.picture);                    
                 }
             })
             .catch(error => {

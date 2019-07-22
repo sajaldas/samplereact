@@ -22,19 +22,18 @@ class Users extends Component {
     }
 
     storeUpdated = () =>{
-      console.log('subscribed to store');
+      //console.log('subscribed to store');
       //console.log('store users = ', store.getState().users)
       this.setState({
         electedUsers: store.getState().users.electedUsers
       })
     }
 
-    componentDidMount() {
-      console.log('hi');
+    componentDidMount() {      
         let url = 'https://api.github.com/users'
         //fetch(url).then(response => response.json()).then(data => console.log(data));
         axios.get(url).then(response => {
-          console.log('response = ', response);
+          //console.log('response = ', response);
           this.setState({
             users: response.data
           })
@@ -93,7 +92,7 @@ class Users extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('new state = ', state);
+  //console.log('new state = ', state);
   return {
     electedUsers: state.users.electedUsers
   }

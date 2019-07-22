@@ -1,5 +1,4 @@
 import { actionTypes } from "../actions/signup-actions";
-//import _ from 'lodash'
 
 const initialState = {
     user: {}
@@ -15,6 +14,8 @@ export default function signupReducer(state = initialState, action) {
       newState = { ...state, user: payload }
       //console.log('newState = ', newState)
       return newState
+    case actionTypes.LOGOUT_USER:
+      return {...state}
     default:
       return state
   }
