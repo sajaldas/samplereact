@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "16c5ef7d63917814e1ef410e4c4d76bb",
+    "revision": "5c27c26f423448a273952000bf2b67f7",
     "url": "/samplereact/index.html"
   },
   {
-    "revision": "d233e53ee6602a7604aa",
-    "url": "/samplereact/static/css/2.5c100531.chunk.css"
+    "revision": "9d6b86afa41e0e9c5107",
+    "url": "/samplereact/static/css/2.2059356b.chunk.css"
   },
   {
-    "revision": "6f848b10d894824f52bb",
-    "url": "/samplereact/static/css/main.5e263ae2.chunk.css"
+    "revision": "7c437df2af664fb8647a",
+    "url": "/samplereact/static/css/main.ec331416.chunk.css"
   },
   {
-    "revision": "d233e53ee6602a7604aa",
-    "url": "/samplereact/static/js/2.2e125f37.chunk.js"
+    "revision": "9d6b86afa41e0e9c5107",
+    "url": "/samplereact/static/js/2.f57b7434.chunk.js"
   },
   {
-    "revision": "6f848b10d894824f52bb",
-    "url": "/samplereact/static/js/main.63b95eaf.chunk.js"
+    "revision": "7c437df2af664fb8647a",
+    "url": "/samplereact/static/js/main.cb4310b8.chunk.js"
   },
   {
     "revision": "d2d00c159f76ca59cd02",
@@ -42,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fee66e712a8a08eef5805a46892932ad",
     "url": "/samplereact/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  {
+    "revision": "fa5368bba9e951feadc31143dcec691a",
+    "url": "/samplereact/static/media/jabalpur.fa5368bb.geojson"
   },
   {
     "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
