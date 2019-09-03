@@ -1,0 +1,89 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "my point 1"
+      },
+      "geometry": {
+        "coordinates": [
+          79.918424,
+          23.169529
+        ],
+        "type": "Point"
+      },
+      "id": "2a6afb6fb5aa41894934bbc67f37ae50"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "my point 2"
+      },
+      "geometry": {
+        "coordinates": [
+          79.924814,
+          23.164585
+        ],
+        "type": "Point"
+      },
+      "id": "3aab41c612d7f314dcec536cd352d78f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "my point 4"
+      },
+      "geometry": {
+        "coordinates": [
+          79.93228,
+          23.176334
+        ],
+        "type": "Point"
+      },
+      "id": "8cc879c0fcdcdd77a0ead170be2458b1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gol Bazar"
+      },
+      "geometry": {
+        "coordinates": [
+          79.927196,
+          23.170283
+        ],
+        "type": "Point"
+      },
+      "id": "904920f02012c609aa84241a68e4213b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Garha Road"
+      },
+      "geometry": {
+        "coordinates": [
+          79.910705,
+          23.164643
+        ],
+        "type": "Point"
+      },
+      "id": "cc764fcb862e0f2a56c5b1b06b3920b3"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "my point 3"
+      },
+      "geometry": {
+        "coordinates": [
+          79.919057,
+          23.176915
+        ],
+        "type": "Point"
+      },
+      "id": "ea5f0a5de4147155bee2f285377c2076"
+    }
+  ],
+  "type": "FeatureCollection"
+}

@@ -1,0 +1,221 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 6"
+      },
+      "geometry": {
+        "coordinates": [
+          79.929501,
+          23.168839
+        ],
+        "type": "Point"
+      },
+      "id": "1e069df37a7d3552408c7b51caf73604"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 1"
+      },
+      "geometry": {
+        "coordinates": [
+          79.922442,
+          23.171091
+        ],
+        "type": "Point"
+      },
+      "id": "297e5907077b59201c8b1eebdfc0c960"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 2"
+      },
+      "geometry": {
+        "coordinates": [
+          79.924381,
+          23.171833
+        ],
+        "type": "Point"
+      },
+      "id": "2b6510d77d616bcde469ed5f63c7ac0b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 9"
+      },
+      "geometry": {
+        "coordinates": [
+          79.922731,
+          23.169339
+        ],
+        "type": "Point"
+      },
+      "id": "465d32f7db16341fff4be07922ed3b8c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 4"
+      },
+      "geometry": {
+        "coordinates": [
+          79.928718,
+          23.172177
+        ],
+        "type": "Point"
+      },
+      "id": "4c041c1e67e38f7cc8cf0587ec944aea"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 8"
+      },
+      "geometry": {
+        "coordinates": [
+          79.924593,
+          23.168815
+        ],
+        "type": "Point"
+      },
+      "id": "5c9ed590f46a5895deee186a690b32b2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 3"
+      },
+      "geometry": {
+        "coordinates": [
+          79.926618,
+          23.172561
+        ],
+        "type": "Point"
+      },
+      "id": "97a50e8ecaf45e015f36e09fd53d14e4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 5"
+      },
+      "geometry": {
+        "coordinates": [
+          79.930011,
+          23.170598
+        ],
+        "type": "Point"
+      },
+      "id": "b624c9cf21078fa67d5bbc9a2e51745d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "gol bazar"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              79.925835,
+              23.170262
+            ],
+            [
+              79.92592,
+              23.17059
+            ],
+            [
+              79.926158,
+              23.170911
+            ],
+            [
+              79.926465,
+              23.171153
+            ],
+            [
+              79.926924,
+              23.17127
+            ],
+            [
+              79.927443,
+              23.171255
+            ],
+            [
+              79.927868,
+              23.171052
+            ],
+            [
+              79.928114,
+              23.170762
+            ],
+            [
+              79.928302,
+              23.17041
+            ],
+            [
+              79.928251,
+              23.16973
+            ],
+            [
+              79.927842,
+              23.169253
+            ],
+            [
+              79.927553,
+              23.169097
+            ],
+            [
+              79.927153,
+              23.169026
+            ],
+            [
+              79.926788,
+              23.169011
+            ],
+            [
+              79.926422,
+              23.169191
+            ],
+            [
+              79.926175,
+              23.169347
+            ],
+            [
+              79.92598,
+              23.169636
+            ],
+            [
+              79.925827,
+              23.169933
+            ],
+            [
+              79.925835,
+              23.170262
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "cc126edc2484aeee3627bf3d5bbf786f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "point 7"
+      },
+      "geometry": {
+        "coordinates": [
+          79.927145,
+          23.168151
+        ],
+        "type": "Point"
+      },
+      "id": "e3b0b2692e8edd7b9a22aaf52885ca03"
+    }
+  ],
+  "type": "FeatureCollection"
+}

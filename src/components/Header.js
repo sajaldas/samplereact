@@ -69,7 +69,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="header">
+            <div className="header">                
                 <div className="logo">
                     <img src={logo} alt="logo" />
                 </div>
@@ -78,6 +78,8 @@ class Header extends Component {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/users">Users</Link></li>
                         <li><Link to="/todo">Todo List</Link></li>
+                        <li><Link to="/moviecategory">Movies</Link></li>
+                        <li><Link to="/map">Map</Link></li>
                         {this.showSignUpLink()}
                     </ul>
                 </nav>

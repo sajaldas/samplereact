@@ -96,6 +96,7 @@ class Signup extends Component {
                             <div className="row" id="g-signin2"></div>
                             <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleLoginButtonClick}>Login</button></div> */}
                             <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleGoogleSignup}>Signup with Google</button></div>
+                            http://localhost/react/wp-json/wp/v2/posts
                         </div>
                         
                     </div>

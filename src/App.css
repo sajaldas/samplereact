@@ -390,3 +390,44 @@ span.logout, span.profile {
 .userdetails td {
   text-align: left;
 }
+.moviecontainer {
+  display: block;
+  margin: 0 -1.4%;
+  text-align: left;
+}
+.moviecat {
+  display: inline-block;
+  width: 18.7%;
+  padding: 10px;
+  margin: 0 10px 20px 10px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.catimg {
+  cursor: pointer;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.catimg img {
+  max-width: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+}
+.catname {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.mapcontainer {  
+  margin: 0 -0.5%;
+  height: 400px;
+  width: 48%;
+  display: inline-block;
+  margin-right: 2%;
+}
