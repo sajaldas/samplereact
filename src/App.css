@@ -430,4 +430,6 @@ span.logout, span.profile {
   width: 48%;
   display: inline-block;
   margin-right: 2%;
+  margin-bottom: 40px;
 }
+.maptitle{font-weight: bold;}

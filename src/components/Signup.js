@@ -7,7 +7,8 @@ import React, { Component } from 'react';
 const CLIENT_ID = '566747368285-nutel28dapl8063tchef5pnbmfmngslk.apps.googleusercontent.com'
 //const SECRET = 'pn2mTRdDNvXa-TDA8cosyOQ4'
 const OAUTH2_ENDPOINT = 'https://accounts.google.com/o/oauth2/v2/auth';
-const REDIRECT_URL = 'http://localhost:3000/authenticate'
+//const REDIRECT_URL = 'http://localhost:3000/authenticate'
+const REDIRECT_URL = 'https://sajaldas.github.io/authenticate';
 
 class Signup extends Component {
 
@@ -95,8 +96,7 @@ class Signup extends Component {
                             </div>                            
                             <div className="row" id="g-signin2"></div>
                             <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleLoginButtonClick}>Login</button></div> */}
-                            <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleGoogleSignup}>Signup with Google</button></div>
-                            http://localhost/react/wp-json/wp/v2/posts
+                            <div className="row"><button className="btn btn-primary" id="g-signin2" onClick={this.handleGoogleSignup}>Signup with Google</button></div>                            
                         </div>
                         
                     </div>

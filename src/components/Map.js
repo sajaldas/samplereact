@@ -18,31 +18,31 @@ const style = "mapbox://styles/mapbox/streets-v9";
 const data = {
     type: 'Feature',
     geometry: {
-      type: 'Polygon',
-      coordinates: [
-        [
-          [-67.13734351262877, 45.137451890638886],
-          [-66.96466, 44.8097],
-          [-68.03252, 44.3252],
-          [-69.06, 43.98],
-          [-70.11617, 43.68405],
-          [-70.64573401557249, 43.090083319667144],
-          [-70.75102474636725, 43.08003225358635],
-          [-70.79761105007827, 43.21973948828747],
-          [-70.98176001655037, 43.36789581966826],
-          [-70.94416541205806, 43.46633942318431],
-          [-71.08482, 45.3052400000002],
-          [-70.6600225491012, 45.46022288673396],
-          [-70.30495378282376, 45.914794623389355],
-          [-70.00014034695016, 46.69317088478567],
-          [-69.23708614772835, 47.44777598732787],
-          [-68.90478084987546, 47.184794623394396],
-          [-68.23430497910454, 47.35462921812177],
-          [-67.79035274928509, 47.066248887716995],
-          [-67.79141211614706, 45.702585354182816],
-          [-67.13734351262877, 45.137451890638886]
+        type: 'Polygon',
+        coordinates: [
+            [
+                [-67.13734351262877, 45.137451890638886],
+                [-66.96466, 44.8097],
+                [-68.03252, 44.3252],
+                [-69.06, 43.98],
+                [-70.11617, 43.68405],
+                [-70.64573401557249, 43.090083319667144],
+                [-70.75102474636725, 43.08003225358635],
+                [-70.79761105007827, 43.21973948828747],
+                [-70.98176001655037, 43.36789581966826],
+                [-70.94416541205806, 43.46633942318431],
+                [-71.08482, 45.3052400000002],
+                [-70.6600225491012, 45.46022288673396],
+                [-70.30495378282376, 45.914794623389355],
+                [-70.00014034695016, 46.69317088478567],
+                [-69.23708614772835, 47.44777598732787],
+                [-68.90478084987546, 47.184794623394396],
+                [-68.23430497910454, 47.35462921812177],
+                [-67.79035274928509, 47.066248887716995],
+                [-67.79141211614706, 45.702585354182816],
+                [-67.13734351262877, 45.137451890638886]
+            ]
         ]
-      ]
     }
 };
 
@@ -162,7 +162,7 @@ const layerPaint = {
     }
 };
 
-const geoJsonData = {    
+const geoJsonData = {
     "type": "FeatureCollection",
     "features": [{
         "type": "Feature",
@@ -206,7 +206,7 @@ class Map extends Component {
     componentWillUnmount() {
         // const map = this.map;
         // map.remove();        
-      }
+    }
 
     handleonDrag = (viewport) => {
         console.log('map scrolled')
@@ -241,11 +241,12 @@ class Map extends Component {
     }
 
     render() {
-        console.log('geoJsonData = ', geoJsonData)        
+        console.log('geoJsonData = ', geoJsonData)
         return (
             <div className="innercontent">
                 <h1>Map Page</h1>
                 <div className="mapcontainer">
+                    <div className="maptitle">Markers with popup</div>
                     <MapComponent
                         style="mapbox://styles/mapbox/streets-v9"
                         containerStyle={{
@@ -254,14 +255,14 @@ class Map extends Component {
                         }}
                         center={this.state.center}
                         zoom={this.state.zoom}
-                        // flyToOptions={{speed: 0.8}}
+                    // flyToOptions={{speed: 0.8}}
                     >
                         {
                             markerCoords.map((mark) => (
                                 <Layer
                                     key={mark.name}
                                     type="symbol"
-                                    layout={{ "icon-image": mark.icon }}                                    
+                                    layout={{ "icon-image": mark.icon }}
                                     onClick={() => this.markerClick(mark)}>
                                     <Feature coordinates={[mark.long, mark.lat]} />
                                 </Layer>
@@ -275,6 +276,7 @@ class Map extends Component {
                     </MapComponent>
                 </div>
                 <div className="mapcontainer">
+                    <div className="maptitle">Line, Circle, Polygon</div>
                     <MapComponent
                         style="mapbox://styles/mapbox/streets-v9"
                         containerStyle={{
@@ -333,6 +335,7 @@ class Map extends Component {
                     </MapComponent>
                 </div>
                 <div className="mapcontainer">
+                    <div className="maptitle">Heatmap</div>
                     <MapComponent
                         style="mapbox://styles/mapbox/streets-v9"
                         containerStyle={{
@@ -355,54 +358,34 @@ class Map extends Component {
                             <Feature coordinates={[79.924381, 23.171833]} />
                         </Layer>
                     </MapComponent>
-                </div>
-                {/* <div className="mapcontainer">
+                </div>                
+                <div className="mapcontainer" id="map5">
+                    <div className="maptitle">Geojson Layer</div>
                     <MapComponent
                         style="mapbox://styles/mapbox/streets-v9"
                         containerStyle={{
                             height: "100%",
                             width: "100%",
                         }}
-                        //fitBounds={[[79.9,23.2], [79.9,23.2]]}
                         center={[79.927052, 23.170114]}
                         zoom={[15]}
                     >
-                        <Source id='jabalpur' type='geojson' data={geojson} />
-                        <Layer
-                            id='test'
-                            type='symbol'
-                            //paint={layerPaint}
-                            //geoJSONSourceOptions = 'geoJsonData'
-                            source='jabalpur'
-                            layout={{ "icon-image": "bank-15" }}                             
-                        />                            
-                    </MapComponent>
-                </div> */}
-                <div className="mapcontainer" id="map5">
-                <MapComponent
-                    style="mapbox://styles/mapbox/streets-v9"
-                    containerStyle={{
-                        height: "100%",
-                        width: "100%",
-                    }}
-                    center={[79.927052, 23.170114]}
-                    zoom={[15]}
-                >
-                    <GeoJSONLayer
-                    data={geojson}
-                    symbolLayout={{
-                        "icon-image": "car-15",
-                        "text-field": "{name}",
-                        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                        "text-offset": [0, 0.6],
-                        "text-anchor": "top"
-                    }}
-                    symbolPaint={{'text-color': 'red'}}
-                    // circlePaint={{'circle-color': 'white'}}
-                    fillPaint = {{'fill-color': '#b169f5', 'fill-opacity': 0.5, 'fill-outline-color': '#88898F'}}
-                    />
+                        <GeoJSONLayer
+                            data={geojson}
+                            symbolLayout={{
+                                "icon-image": "car-15",
+                                "text-field": "{name}",
+                                "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                                "text-offset": [0, 0.6],
+                                "text-anchor": "top"
+                            }}
+                            symbolPaint={{ 'text-color': 'red' }}
+                            // circlePaint={{'circle-color': 'white'}}
+                            fillPaint={{ 'fill-color': '#b169f5', 'fill-opacity': 0.5, 'fill-outline-color': '#88898F' }}
+                        />
                     </MapComponent>
                 </div>
+                
             </div>
         )
     }
