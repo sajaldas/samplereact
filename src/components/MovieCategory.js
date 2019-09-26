@@ -12,6 +12,9 @@ const store = configureStore()
 
 const axios = require('axios');
 
+//const HOST ='http://localhost/react/';
+const HOST ='http://dev.vrtechnologies.info/';
+
 class MovieCategory extends Component {
 
   constructor(props) {
@@ -26,7 +29,7 @@ class MovieCategory extends Component {
   componentDidMount() {
     const categoryId = this.props.match.params.id;
     //console.log('categoryId = ', categoryId)
-    let url = 'http://localhost/react/wp-json/apis/v1/moviecategories'
+    let url = HOST+'wp-json/apis/v1/moviecategories'
     if (categoryId) {
       url += '/' + categoryId
     }
@@ -47,7 +50,7 @@ class MovieCategory extends Component {
     console.log('nextProps = ', nextProps)
     const categoryId = this.props.match.params.id;
     //console.log('categoryId = ', categoryId)
-    let url = 'http://localhost/react/wp-json/apis/v1/moviecategories'
+    let url = HOST+'wp-json/apis/v1/moviecategories'
     if (categoryId) {
       url += '/' + categoryId
     }

@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
+import { setTolist, addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
 
+const axios = require('axios');
+
+const HOST ='http://localhost/react/';
+//const HOST ='http://dev.vrtechnologies.info/';
 
 class Todo extends Component {
 
@@ -14,9 +18,50 @@ class Todo extends Component {
             filterApplied: false,
             filterType: 'all',
             itemId: 0,
-            toDoList: []
+            toDoList: [],
+            reatApiToken:null
         }        
     }    
+
+    componentDidMount() {        
+        let url = HOST+'wp-json/jwt-auth/v1/token'        
+        axios.post(url, {
+            username: "admin",
+            password: "admin"
+        }).then(response => {          
+            //console.log('response = ', response);            
+          if(response.data.token!==undefined)
+          {              
+            this.setState({
+                reatApiToken: response.data.token
+            })
+            this.getTodoList()            
+          }        
+        }).catch(function (error) {
+          console.log(error);
+        });
+    }
+
+    componentDidUpdate(nextProps) {
+        console.log('two');
+    }
+
+    transformTodoList = (data) => {        
+        let newArr = data.data.map((item, index) => {        
+            return {id: item.id, name: item.title.rendered, done: false}
+        })
+        //console.log('newArr = ', newArr);
+        return newArr;
+    }
+
+    getTodoList = () => {
+        axios.get(HOST+'wp-json/wp/v2/todo').then(resp => {
+            //console.log('todos list = ', resp);
+            const transformTodoList = this.transformTodoList(resp)
+            //console.log('transformTodoList = ', transformTodoList)
+            this.props.setTolist(transformTodoList)            
+        })
+    }
 
     handleInput = (e) => {
         //console.log('val = ', e.target.value)
@@ -87,11 +132,14 @@ class Todo extends Component {
 
     renderToDoList = () => {
         //let items = this.props.todos;
+        //console.log('toDoList aa = ', this.props.todos)
         let items;
         if(this.state.filterApplied===false)
         items = this.props.todos;
         else if(this.state.filterApplied===true)
         items = this.state.toDoList;
+
+        //console.log('items = ', items)
         
         if (items.length) {        
             return items.map((item) => {
@@ -136,6 +184,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
+        setTolist, setTolist,
         addTolist: addTolist,
         updateToDoStatusDone: updateToDoStatusDone,
         updateToDoStatusNotDone: updateToDoStatusNotDone,

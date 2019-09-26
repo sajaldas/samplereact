@@ -14,11 +14,18 @@ const updateToDoList = (toDos, delItem, status) => {
   ]
 }
 
-export default function todoReducer(state = initialState, action) {
-  //console.log('state = ', state, 'action = ', action)  
+export default function todoReducer(state = initialState, action) {  
   let { type, payload } = action;
   let newState;
-  switch (type) {
+  //console.log('state = ', state, 'action = ', action, 'type = ', type)  
+  //console.log('payload = ', payload)
+  switch (type) {    
+    case actionTypes.SET_TO_LIST:
+      //console.log('set list payload = ', payload)
+      //newState = { ...state, todoList: [...state.todoList, { id: payload.id, name: payload.name, done: false }] }
+      newState = { ...state, todoList: payload }
+      //console.log('newState = ', newState)
+      return newState
     case actionTypes.ADD_TO_LIST:
       newState = { ...state, todoList: [...state.todoList, { id: payload.id, name: payload.name, done: false }] }
       //console.log('newState = ', newState)

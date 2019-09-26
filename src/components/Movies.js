@@ -10,6 +10,9 @@ const store = configureStore()
 
 const axios = require('axios');
 
+//const HOST ='http://localhost/react/';
+const HOST ='http://dev.vrtechnologies.info/';
+
 class Movies extends Component {
 
   constructor(props) {
@@ -21,7 +24,7 @@ class Movies extends Component {
   }
 
   componentDidMount() {
-    let url = 'http://localhost/react/wp-json/apis/v1/moviecategories'
+    let url = HOST+'wp-json/apis/v1/moviecategories'
     //fetch(url).then(response => response.json()).then(data => console.log(data));
     axios.get(url).then(response => {
       //console.log('response = ', response);

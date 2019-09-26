@@ -166,7 +166,7 @@ const geoJsonData = {
     "type": "FeatureCollection",
     "features": [{
         "type": "Feature",
-        "properties": {},
+        "properties": {"name": "my point"},
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -176,6 +176,14 @@ const geoJsonData = {
         }
     }]
 }
+
+const RASTER_SOURCE_OPTIONS = {
+    "type": "raster",
+    "tiles": [
+      "https://api.mapbox.com/v4/mapbox.satellite/1/0/0@2x.jpg90?access_token=pk.eyJ1Ijoic2FqYWwtdnJ0ZWNoIiwiYSI6ImNqemRzeDJldjAzZ24zZ3BocDlsZzNwdDgifQ.-K6a-NHMP1k2Pxl9A91pWg",
+    ],
+    "tileSize": 512
+  };
 
 //const map;
 
@@ -262,7 +270,7 @@ class Map extends Component {
                                 <Layer
                                     key={mark.name}
                                     type="symbol"
-                                    layout={{ "icon-image": mark.icon }}
+                                    layout={{ "icon-image": mark.icon, "icon-size": 1.5 }}
                                     onClick={() => this.markerClick(mark)}>
                                     <Feature coordinates={[mark.long, mark.lat]} />
                                 </Layer>
@@ -385,7 +393,49 @@ class Map extends Component {
                         />
                     </MapComponent>
                 </div>
-                
+                <div className="mapcontainer">
+                    <div className="maptitle">Source</div>
+                    <MapComponent
+                        style="mapbox://styles/mapbox/streets-v9"
+                        containerStyle={{
+                            height: "100%",
+                            width: "100%",
+                        }}
+                        center={[79.92709286050604, 23.17011148959141]}
+                        zoom={[15]}
+                    >
+                        <Source id="source_id" type="geojson" data={geojson} />
+                        <Layer id="layer_id" type="symbol" source="source_id" layout={{ "icon-image": "car-15", "text-field": "hallu", "icon-size": 1.5 }} />
+                    </MapComponent>
+                </div> 
+                <div className="mapcontainer">
+                    <div className="maptitle">Source</div>
+                    <MapComponent
+                        style="mapbox://styles/mapbox/streets-v9"
+                        containerStyle={{
+                            height: "100%",
+                            width: "100%",
+                        }}
+                        center={[79.927052, 23.170114]}
+                        zoom={[15]}
+                    >
+                        <GeoJSONLayer
+                            data={geojson}
+                            // symbolLayout={{
+                            //     "icon-image": "car-15",
+                            //     "text-field": "{name}",
+                            //     "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                            //     "text-offset": [0, 0.6],
+                            //     "text-anchor": "top"
+                            // }}
+                            // symbolPaint={{ 'text-color': 'red' }}
+                            circlePaint={layerPaint}
+                            // fillPaint={{ 'fill-color': '#b169f5', 'fill-opacity': 0.5, 'fill-outline-color': '#88898F' }}
+                            fillPaint={layerPaint}
+                        />
+                    </MapComponent>
+                </div> 
+
             </div>
         )
     }
