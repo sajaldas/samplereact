@@ -5,8 +5,8 @@ import { setTolist, addTolist, updateToDoStatusDone, updateToDoStatusNotDone, de
 
 const axios = require('axios');
 
-const HOST ='http://localhost/react/';
-//const HOST ='http://dev.vrtechnologies.info/';
+//const HOST ='http://localhost/react/';
+const HOST ='http://dev.vrtechnologies.info/';
 
 class Todo extends Component {
 
