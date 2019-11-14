@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { setTolist, addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
+import { getTodolist, setTolist, addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
 
 const axios = require('axios');
 
-//const HOST ='http://localhost/react/';
-const HOST ='http://dev.vrtechnologies.info/';
+const HOST ='http://localhost/react/';
+//const HOST ='http://dev.vrtechnologies.info/';
 
 class Todo extends Component {
 
@@ -20,30 +20,32 @@ class Todo extends Component {
             itemId: 0,
             toDoList: [],
             reatApiToken:null
-        }        
-    }    
+        }
+
+        this.props.getTodolist()
+    }
 
     componentDidMount() {        
-        let url = HOST+'wp-json/jwt-auth/v1/token'        
-        axios.post(url, {
-            username: "admin",
-            password: "admin"
-        }).then(response => {          
-            //console.log('response = ', response);            
-          if(response.data.token!==undefined)
-          {              
-            this.setState({
-                reatApiToken: response.data.token
-            })
-            this.getTodoList()            
-          }        
-        }).catch(function (error) {
-          console.log(error);
-        });
+        // let url = HOST+'wp-json/jwt-auth/v1/token'        
+        // axios.post(url, {
+        //     username: "admin",
+        //     password: "admin"
+        // }).then(response => {          
+        //     //console.log('response = ', response);            
+        //   if(response.data.token!==undefined)
+        //   {              
+        //     this.setState({
+        //         reatApiToken: response.data.token
+        //     })
+        //     this.getTodoList()            
+        //   }        
+        // }).catch(function (error) {
+        //   console.log(error);
+        // });
     }
 
     componentDidUpdate(nextProps) {
-        console.log('two');
+        console.log('componentDidUpdate called');
     }
 
     transformTodoList = (data) => {        
@@ -54,14 +56,14 @@ class Todo extends Component {
         return newArr;
     }
 
-    getTodoList = () => {
-        axios.get(HOST+'wp-json/wp/v2/todo').then(resp => {
-            //console.log('todos list = ', resp);
-            const transformTodoList = this.transformTodoList(resp)
-            //console.log('transformTodoList = ', transformTodoList)
-            this.props.setTolist(transformTodoList)            
-        })
-    }
+    // getTodoList = () => {
+    //     axios.get(HOST+'wp-json/wp/v2/todo').then(resp => {
+    //         //console.log('todos list = ', resp);
+    //         const transformTodoList = this.transformTodoList(resp)
+    //         //console.log('transformTodoList = ', transformTodoList)
+    //         this.props.setTolist(transformTodoList)            
+    //     })
+    // }
 
     handleInput = (e) => {
         //console.log('val = ', e.target.value)
@@ -184,7 +186,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        setTolist, setTolist,
+        getTodolist: getTodolist,
+        setTolist: setTolist,
         addTolist: addTolist,
         updateToDoStatusDone: updateToDoStatusDone,
         updateToDoStatusNotDone: updateToDoStatusNotDone,

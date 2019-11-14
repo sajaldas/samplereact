@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
 
+
+function callMe()
+{
+    console.log('hey sajal');    
+}
+
+function* newCallMe()
+{
+    yield 'one'
+    yield 'two'    
+    const final = yield 'three'
+    return final
+}
+
 class Home extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {            
-    //     }
-    // }
+    constructor(props) {
+        super(props)
+        this.state = {            
+        }
+        callMe();
+        const callMeIterator = newCallMe();
+        console.log('1 = ', callMeIterator.next());
+        console.log('2 = ', callMeIterator.next());
+        console.log('3 = ', callMeIterator.next());
+        console.log('4 = ', callMeIterator.next('my value'));
+
+    }
+    
 
     render() {
         return (

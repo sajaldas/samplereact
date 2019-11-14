@@ -1,3 +1,4 @@
+const GET_LIST = "get_list";
 const SET_TO_LIST = "set_to_list";
 const ADD_TO_LIST = "add_to_list";
 const DELETE_FROM_LIST = "delete_from_list";
@@ -6,11 +7,18 @@ const UPDATE_STATUS_NOTDONE = "update_status_notdone";
 
 
 export const actionTypes = {
+  GET_LIST,
   SET_TO_LIST,
   ADD_TO_LIST,
   DELETE_FROM_LIST,
   UPDATE_STATUS_DONE,
   UPDATE_STATUS_NOTDONE
+}
+
+export function getTodolist(payload) {  
+  return {
+      type: GET_LIST      
+  }
 }
 
 export function setTolist(payload) {
@@ -51,6 +59,7 @@ export function updateToDoStatusNotDone(payload) {
 }
 
 export default {
+  getTodolist,
   setTolist,
   addTolist,
   deleteFromList,

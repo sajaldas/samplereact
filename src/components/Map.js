@@ -408,7 +408,7 @@ class Map extends Component {
                         <Layer id="layer_id" type="symbol" source="source_id" layout={{ "icon-image": "car-15", "text-field": "hallu", "icon-size": 1.5 }} />
                     </MapComponent>
                 </div> 
-                <div className="mapcontainer">
+                {/* <div className="mapcontainer">
                     <div className="maptitle">Source</div>
                     <MapComponent
                         style="mapbox://styles/mapbox/streets-v9"
@@ -434,7 +434,7 @@ class Map extends Component {
                             fillPaint={layerPaint}
                         />
                     </MapComponent>
-                </div> 
+                </div>  */}
 
             </div>
         )
