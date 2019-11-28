@@ -3,10 +3,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getTodolist, setTolist, addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
 
-const axios = require('axios');
-
-const HOST ='http://localhost/react/';
-//const HOST ='http://dev.vrtechnologies.info/';
 
 class Todo extends Component {
 
@@ -45,25 +41,8 @@ class Todo extends Component {
     }
 
     componentDidUpdate(nextProps) {
-        console.log('componentDidUpdate called');
-    }
-
-    transformTodoList = (data) => {        
-        let newArr = data.data.map((item, index) => {        
-            return {id: item.id, name: item.title.rendered, done: false}
-        })
-        //console.log('newArr = ', newArr);
-        return newArr;
-    }
-
-    // getTodoList = () => {
-    //     axios.get(HOST+'wp-json/wp/v2/todo').then(resp => {
-    //         //console.log('todos list = ', resp);
-    //         const transformTodoList = this.transformTodoList(resp)
-    //         //console.log('transformTodoList = ', transformTodoList)
-    //         this.props.setTolist(transformTodoList)            
-    //     })
-    // }
+        //console.log('componentDidUpdate called');
+    }    
 
     handleInput = (e) => {
         //console.log('val = ', e.target.value)
@@ -78,13 +57,14 @@ class Todo extends Component {
             id++;
             this.setState({ itemId: id })
             //console.log('text = ', this.state.inputText);        
-            this.props.addTolist({ name: this.state.inputText, id: id })            
+            const postData = { title: this.state.inputText, status: 'publish' }; //id: id
+            this.props.addTolist(postData)            
             this.setState({ inputValue: '' })
             this.setState({ inputText: '' }) 
             let self = this;
-            setTimeout(function(){                
-                self.filterList(self.state.filterType)
-            }, 100)
+            // setTimeout(function(){                
+            //     self.filterList(self.state.filterType)
+            // }, 100)
         }
     }
 
@@ -189,6 +169,7 @@ const mapDispatchToProps = (dispatch) => {
         getTodolist: getTodolist,
         setTolist: setTolist,
         addTolist: addTolist,
+        //updateList: updateList,
         updateToDoStatusDone: updateToDoStatusDone,
         updateToDoStatusNotDone: updateToDoStatusNotDone,
         deleteFromList: deleteFromList
