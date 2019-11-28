@@ -1,10 +1,9 @@
 
 import axios from "axios";
+import { constants } from "buffer";
+import * as myConstants from '../constants'
 
-const apiBaseUrl = 'http://localhost/react';
-const username='admin'
-const password='ZCL6 SkTS 3my8 t9aQ Vc07 QcgQ'
-const encodedString = new Buffer(username + ':' + password).toString('base64');
+const encodedString = new Buffer(myConstants.API_USER + ':' + myConstants.API_PASS).toString('base64');
 
 export default class Api {
     // constructor() {
@@ -13,7 +12,7 @@ export default class Api {
 
     getList() {
         return new Promise((resolve, reject) => {            
-            axios.get(apiBaseUrl + '/wp-json/wp/v2/todo')
+            axios.get(myConstants.API_BASE_URL + '/wp-json/wp/v2/todo')
                 .then(res => {
                     //console.log('res = ', res)
                     resolve(res.data)
@@ -25,7 +24,7 @@ export default class Api {
 
     addtoList(data) {        
         return new Promise((resolve, reject) => {
-            axios.post(apiBaseUrl + '/wp-json/wp/v2/todo', data, {headers: {Authorization: "Basic "+encodedString}})
+            axios.post(myConstants.API_BASE_URL + '/wp-json/wp/v2/todo', data, {headers: {Authorization: "Basic "+encodedString}})
                 .then(res => {
                     //console.log('res = ', res)
                     resolve(res.data)
@@ -37,9 +36,9 @@ export default class Api {
 
     deleteFromList(data)
     {        
-        const newEncodedString = new Buffer(username + ':' + 'admin').toString('base64');
+        const newEncodedString = new Buffer(myConstants.API_USER + ':' + myConstants.API_PASS2).toString('base64');
         return new Promise((resolve, reject) => {
-            axios.delete(apiBaseUrl + '/wp-json/wp/v2/todo/'+data.id, {headers: {Authorization: "Basic "+newEncodedString}})
+            axios.delete(myConstants.API_BASE_URL + '/wp-json/wp/v2/todo/'+data.id, {headers: {Authorization: "Basic "+newEncodedString}})
                 .then(res => {
                     //console.log('res = ', res)
                     resolve(res.data)
