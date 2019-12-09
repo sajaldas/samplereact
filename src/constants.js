@@ -1,6 +1,7 @@
 // export const API_BASE_URL = 'http://localhost/react'
 // export const API_USER = 'admin'
 // export const API_PASS = 'ZCL6 SkTS 3my8 t9aQ Vc07 QcgQ'
+// export const API_PASS2 = 'admin'
 
 export const API_BASE_URL = 'http://dev.vrtechnologies.info/'
 export const API_USER = 'reactsagaapp'

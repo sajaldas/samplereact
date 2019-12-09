@@ -5,11 +5,13 @@ const initialState = {
   todoList: []
 }
 
-const updateToDoList = (toDos, delItem, status) => {
+const updateToDoList = (toDos, delItem, newValue) => {
   const index = _.findIndex(toDos, (item) => item.id === delItem)
+  //console.log('newValue = ', newValue)
   return [
     ...toDos.slice(0, index),
-    { ...toDos[index], done: status },
+    //{ ...toDos[index], done: status },
+    { ...toDos[index], ...newValue },
     ...toDos.slice(index + 1)
   ]
 }
@@ -34,12 +36,18 @@ export default function todoReducer(state = initialState, action) {
       newState = { ...state, todoList: [...state.todoList, { id: payload.id, name: payload.name, done: false }] }
       //console.log('newState = ', newState)
       return newState
+    case actionTypes.UPDATE_STATUS:
+      newState = {...state, todoList: updateToDoList(state.todoList, payload.id, {loading: true}) }
+      return newState
     case actionTypes.UPDATE_STATUS_DONE:
-      newState = { ...state, todoList: updateToDoList(state.todoList, payload.id, true) }
+      newState = { ...state, todoList: updateToDoList(state.todoList, payload.id, {done: true, loading: false}) }
       return newState
     case actionTypes.UPDATE_STATUS_NOTDONE:
-      newState = { ...state, todoList: updateToDoList(state.todoList, payload.id, false) }
+      newState = { ...state, todoList: updateToDoList(state.todoList, payload.id, {done: false, loading: false}) }
       return newState
+    case actionTypes.DELETE_FROM_LIST:
+      newState = { ...state, todoList: updateToDoList(state.todoList, payload.id, {loading: true}) }
+      return newState    
     case actionTypes.DELETE_FROM_STORE:
       newState = { ...state, todoList: _.filter(state.todoList, function(item) { return item.id!==payload.id; }) }            
       return newState

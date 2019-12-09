@@ -27,6 +27,14 @@ class Home extends Component {
         console.log('3 = ', callMeIterator.next());
         console.log('4 = ', callMeIterator.next('my value'));
 
+        let allItems = {
+            fruits: ["Banana", "Orange", "Apple", "Mango"],
+            flowers: ["Tulip", "Poppy", "Rose", "Sunflower"],
+            birds: ["Lion", "Tiger", "Cow", "Monkey", "Cat"]
+        }
+        console.log(allItems)
+        let newItem = {...allItems, birds: allItems.fruits}
+        console.log(newItem)
     }
     
 

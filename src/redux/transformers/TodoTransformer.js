@@ -6,12 +6,12 @@ export const transformApiPayloadToStore = (data) => {
     if(Array.isArray(data))
     {
         newArr = data.map((item, index) => {        
-            return {id: item.id, name: item.title.rendered, done: false}
+            return {id: item.id, name: item.title.rendered, done: (item.status==='publish') ? false : true, loading: false}
         })
     }
     else
     {
-        newArr = {id: data.id, name: data.title.rendered, done: false}
+        newArr = {id: data.id, name: data.title.rendered, done: (data.status==='publish') ? false : true, loading: false}
     }
     //console.log('newArr = ', newArr);
     return newArr;

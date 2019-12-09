@@ -4,6 +4,7 @@ const ADD_TO_LIST = "add_to_list";
 const UPDATE_LIST = "update_list";
 const DELETE_FROM_LIST = "delete_from_list";
 const DELETE_FROM_STORE = "delete_from_store";
+const UPDATE_STATUS = "update_status";
 const UPDATE_STATUS_DONE = "update_status_done";
 const UPDATE_STATUS_NOTDONE = "update_status_notdone";
 
@@ -15,6 +16,7 @@ export const actionTypes = {
   UPDATE_LIST,
   DELETE_FROM_LIST,
   DELETE_FROM_STORE,
+  UPDATE_STATUS,
   UPDATE_STATUS_DONE,
   UPDATE_STATUS_NOTDONE
 }
@@ -65,7 +67,16 @@ export function deleteFromStore(payload) {
   }
 }
 
+export function updateToDoStatus(payload) {
+  //console.log('payload = ', payload)
+  return {
+      type: UPDATE_STATUS,
+      payload: payload
+  }
+}
+
 export function updateToDoStatusDone(payload) {
+  console.log('draft called payload = ', payload)
   return {
       type: UPDATE_STATUS_DONE,
       payload: payload
@@ -73,6 +84,7 @@ export function updateToDoStatusDone(payload) {
 }
 
 export function updateToDoStatusNotDone(payload) {
+  console.log('publish called payload = ', payload)
   return {
       type: UPDATE_STATUS_NOTDONE,
       payload: payload
@@ -86,6 +98,7 @@ export default {
   updateList,
   deleteFromList,
   deleteFromStore,
+  updateToDoStatus,
   updateToDoStatusDone,
   updateToDoStatusNotDone
 }

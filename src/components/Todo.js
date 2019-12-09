@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ReactLoading from 'react-loading';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getTodolist, setTolist, addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList } from '../redux/actions/todo-actions'
+import classNames from "classnames";
+import { getTodolist, setTolist, addTolist, updateToDoStatusDone, updateToDoStatusNotDone, deleteFromList, updateToDoStatus } from '../redux/actions/todo-actions'
 
 
 class Todo extends Component {
@@ -18,7 +20,7 @@ class Todo extends Component {
             reatApiToken:null
         }
 
-        this.props.getTodolist()
+        this.props.getTodolist()        
     }
 
     componentDidMount() {        
@@ -60,11 +62,7 @@ class Todo extends Component {
             const postData = { title: this.state.inputText, status: 'publish' }; //id: id
             this.props.addTolist(postData)            
             this.setState({ inputValue: '' })
-            this.setState({ inputText: '' }) 
-            let self = this;
-            // setTimeout(function(){                
-            //     self.filterList(self.state.filterType)
-            // }, 100)
+            this.setState({ inputText: '' })             
         }
     }
 
@@ -100,16 +98,17 @@ class Todo extends Component {
 
     handleCheckBox = (is_chk, id) => {
         //console.log('chk = ', is_chk);
-        if(is_chk)
-        this.props.updateToDoStatusDone({id: id})
-        else
-        this.props.updateToDoStatusNotDone({id: id})
-        //console.log('this.props = ', this.props)
-        this.filterList(this.state.filterType)
+        this.props.updateToDoStatus({id: id, done: is_chk, loading: true})
+        // if(is_chk)
+        // this.props.updateToDoStatusDone({id: id})
+        // else
+        // this.props.updateToDoStatusNotDone({id: id})
+        // //console.log('this.props = ', this.props)
+        // this.filterList(this.state.filterType)
     }
 
     removeItem = (id) => {        
-        this.props.deleteFromList({id: id, doConfirm: true})
+        this.props.deleteFromList({id: id, loading: true})
     }
 
     renderToDoList = () => {
@@ -125,11 +124,23 @@ class Todo extends Component {
         
         if (items.length) {        
             return items.map((item) => {
+                //console.log('item = ', item)
                 return (
-                    <li key={item.id}><label><input type="checkbox" onChange={(e) => this.handleCheckBox(e.target.checked, item.id)} 
-                    checked={(item.done) ? "checked" : "" } /> 
-                    <span>{item.name}</span></label>
-                    <i className="fa fa-trash list-rm" aria-hidden="true" onClick={() => this.removeItem(item.id)}></i>
+                    <li key={item.id}>
+                        <label>
+                        <div className="actionbox">
+                            <input type="checkbox" className={
+                                classNames({'show': !item.loading, 'hide': item.loading})
+                            } onChange={(e) => this.handleCheckBox(e.target.checked, item.id)} checked={(item.done) ? "checked" : "" } /> 
+                            <div className={
+                                classNames('loader', {'show': item.loading, 'hide': !item.loading})
+                            }>
+                                <ReactLoading type="spokes" color="#3794ff" height={16} width={16} />
+                            </div>
+                        </div>                            
+                        <span>{item.name}</span>
+                        </label>
+                        <i className="fa fa-trash list-rm" aria-hidden="true" onClick={() => this.removeItem(item.id)}></i>
                     </li>
                 )
             })
@@ -168,8 +179,8 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         getTodolist: getTodolist,
         setTolist: setTolist,
-        addTolist: addTolist,
-        //updateList: updateList,
+        addTolist: addTolist,        
+        updateToDoStatus,
         updateToDoStatusDone: updateToDoStatusDone,
         updateToDoStatusNotDone: updateToDoStatusNotDone,
         deleteFromList: deleteFromList

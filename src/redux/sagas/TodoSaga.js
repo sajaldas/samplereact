@@ -1,7 +1,14 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
 
 import Api from "../../network/api";
-import { actionTypes, getTodolist, setTolist, updateList, deleteFromStore } from "../actions/todo-actions";
+import { 
+    actionTypes,     
+    setTolist, 
+    updateList,
+    updateToDoStatusDone,
+    updateToDoStatusNotDone, 
+    deleteFromStore 
+} from "../actions/todo-actions";
 import {transformApiPayloadToStore} from '../transformers/TodoTransformer'
 
 let ApiCall = new Api();
@@ -37,6 +44,39 @@ export function* watchAddTodo()
 {
     try {        
         yield takeEvery(actionTypes.ADD_TO_LIST, AddTodo)        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+function* UpdateStatus(data)
+{    
+    //publish = pending, draft = done
+    try {
+        //console.log('data.payload = ', data.payload)
+        const newPayload = {id: data.payload.id, status: (data.payload.done) ? 'draft' : 'publish'}
+        const result = yield call(ApiCall.updateTodoStatus, newPayload)
+        //let updatePayload={id: result.id}
+        if(result)
+        {
+            let status = data.payload.done
+            //console.log('data.status = ', data.payload.done)
+            if(status)
+            yield put(updateToDoStatusDone({id: data.payload.id}))
+            else
+            yield put(updateToDoStatusNotDone({id: data.payload.id}))
+        }
+        else
+        console.log('something went wrong')
+    } catch (error) {
+        console.log('error = ', error)
+    }        
+}
+
+export function* watchUpdateStatus()
+{
+    try {
+        yield takeEvery(actionTypes.UPDATE_STATUS, UpdateStatus)
     } catch (error) {
         console.log(error)
     }
